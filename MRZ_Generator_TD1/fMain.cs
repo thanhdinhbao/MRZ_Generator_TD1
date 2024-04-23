@@ -95,6 +95,7 @@ namespace MRZ_Generator_TD1
             cmdProcess.StartInfo.RedirectStandardOutput = true;
             cmdProcess.StartInfo.UseShellExecute = false;
             cmdProcess.StartInfo.CreateNoWindow = true;
+            cmdProcess.StartInfo.Verb = "runas";
             cmdProcess.Start();
             string output = cmdProcess.StandardOutput.ReadToEnd();
             cmdProcess.WaitForExit();
@@ -555,10 +556,16 @@ namespace MRZ_Generator_TD1
             return date;
         }
 
-        //public string getAddress()
-        //{
+        public string getAddress()
+        {
+            string add = string.Empty;
+            add += txtVillage.Text + ", ";
+            add += cbxWard.Text + ", ";
+            add += cbxDistrict.Text + ", ";
+            add += cbxProvince.Text;
 
-        //}
+            return add;
+        }
 
         void GenQRCode(string data)
         {
@@ -578,7 +585,7 @@ namespace MRZ_Generator_TD1
             dataQR += getFullName() + "|";
             dataQR += getDateofBirth() + "|";
             dataQR += getGioiTinh() + "|";
-            dataQR += txtVillage.Text + "|";
+            dataQR += getAddress() + "|";
             dataQR += getNgayCapCCCD();
             GenQRCode(dataQR);
         }
