@@ -639,16 +639,17 @@ namespace MRZ_Generator_TD1
 
 
 
-        #endregion
 
-        private void cbxProvince_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadDistrict();
-        }
+        #endregion
 
         private void cbxDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadCommune();
+        }
+
+        private void cbxProvince_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDistrict();
         }
     }
 }
